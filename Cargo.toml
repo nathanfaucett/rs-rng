@@ -1,0 +1,11 @@
+[package]
+name = "rng"
+version = "0.1.0"
+authors = ["nathanfaucett <nathanfaucett@gmail.com>"]
+
+keywords = ["rng"]
+description = "random number generator trait"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/nathanfaucett/rs-rng.git"
+homepage = "https://github.com/nathanfaucett/rs-rng"
