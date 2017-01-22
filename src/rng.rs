@@ -1,24 +1,11 @@
-use core::{u32, u64};
+use core::usize;
 
 
-pub const MAX_U32: u32 = u32::MAX;
-pub const MAX_U64: u64 = u64::MAX;
+pub const MAX_USIZE: usize = usize::MAX;
 
 
 pub trait Rng {
-    fn next_u32(&mut self) -> u32;
-    fn next_u64(&mut self) -> u64;
-
-    #[cfg(target_pointer_width = "32")]
-    #[inline(always)]
-    fn next(&mut self) -> usize {
-        self.next_u32() as usize
-    }
-    #[cfg(target_pointer_width = "64")]
-    #[inline(always)]
-    fn next(&mut self) -> usize {
-        self.next_u64() as usize
-    }
+    fn next(&mut self) -> usize;
 
     #[inline(always)]
     fn next_usize(&mut self) -> usize {
@@ -26,11 +13,20 @@ pub trait Rng {
     }
 
     #[inline(always)]
+    fn next_u32(&mut self) -> u32 {
+        self.next() as u32
+    }
+    #[inline(always)]
+    fn next_u64(&mut self) -> u64 {
+        self.next() as u64
+    }
+
+    #[inline(always)]
     fn next_f32(&mut self) -> f32 {
-        self.next_u32() as f32 / (MAX_U32 as f32)
+        self.next() as f32 / (MAX_USIZE as f32)
     }
     #[inline(always)]
     fn next_f64(&mut self) -> f64 {
-        self.next_u64() as f64 / (MAX_U64 as f64)
+        self.next() as f64 / (MAX_USIZE as f64)
     }
 }
