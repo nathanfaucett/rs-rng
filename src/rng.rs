@@ -1,8 +1,8 @@
 use core::{u32, u64};
 
 
-pub static MAX_U32: u32 = u32::MAX;
-pub static MAX_U64: u64 = u64::MAX;
+pub const MAX_U32: u32 = u32::MAX;
+pub const MAX_U64: u64 = u64::MAX;
 
 
 pub trait Rng {
