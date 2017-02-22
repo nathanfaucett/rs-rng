@@ -1,7 +1,8 @@
 use core::usize;
 
 
-pub const MAX_USIZE: usize = usize::MAX;
+pub const INV_MAX_F32: f32 = 1f32 / usize::MAX as f32;
+pub const INV_MAX_F64: f64 = 1f64 / usize::MAX as f64;
 
 
 pub trait Rng {
@@ -23,10 +24,10 @@ pub trait Rng {
 
     #[inline(always)]
     fn next_f32(&mut self) -> f32 {
-        self.next() as f32 / (MAX_USIZE as f32)
+        self.next() as f32 * INV_MAX_F32
     }
     #[inline(always)]
     fn next_f64(&mut self) -> f64 {
-        self.next() as f64 / (MAX_USIZE as f64)
+        self.next() as f64 * INV_MAX_F64
     }
 }
