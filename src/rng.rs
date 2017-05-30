@@ -8,7 +8,7 @@ pub const INV_MAX_F64: f64 = 1f64 / usize::MAX as f64;
 pub trait Rng {
     fn next(&mut self) -> usize;
 
-    #[inline]
+    #[inline(always)]
     fn next_usize(&mut self) -> usize {
         self.next()
     }
